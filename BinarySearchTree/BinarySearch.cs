@@ -26,7 +26,10 @@ namespace BinarySearchTree
 
         //defining static variables so that we can get proper count 
         public static int leftCount=0, rightCount=0;
-        
+
+        //this variable created to get result of search method
+        //public bool result;
+
 
         //Creating Add method where parameter as T 
 
@@ -81,5 +84,40 @@ namespace BinarySearchTree
         {
             Console.WriteLine("Size of the tree is :" + " " + (1 + leftCount + rightCount));
         }
+
+        //Search method to search for a particular element 
+
+        public bool Search(T element,BinarySearch<T> node)
+        {
+            if(node== null)
+            return false;
+
+            if (node.NodeData.Equals(element))
+            {
+                Console.WriteLine("Element Found : " + node.NodeData);
+                return true;
+            }
+            //else
+            //{
+            //    Console.WriteLine("Element Not Found : ");
+
+            //}
+
+            //Now checking to add element in respective Side
+            //
+            if (element.CompareTo(node.NodeData) < 0)
+            {
+                Search(element, node.leftTree);
+            }
+            if (element.CompareTo(node.NodeData) > 0)
+            {
+                Search(element, node.rightTree);
+
+            }
+          
+            return true;
+
+        }
+
     }
 }
