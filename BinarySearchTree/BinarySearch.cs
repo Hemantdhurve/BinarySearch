@@ -24,13 +24,13 @@ namespace BinarySearchTree
 
         }
 
-        //defining variables
-        int leftCount=0, rightCount=0;
-        bool result=false;
+        //defining static variables so that we can get proper count 
+        public static int leftCount=0, rightCount=0;
+        
 
         //Creating Add method where parameter as T 
 
-        public void Add(T item)
+        public void Insert(T item)
         {
             T root=this.NodeData;
 
@@ -42,7 +42,7 @@ namespace BinarySearchTree
 
                 }
                 else
-                    this.leftTree.Add(item);
+                    this.leftTree.Insert(item);
             }
             else
             {
@@ -51,7 +51,7 @@ namespace BinarySearchTree
                     this.rightTree = new BinarySearch<T>(item);
                 }
                 else
-                    this.rightTree.Add(item);
+                    this.rightTree.Insert(item);
             }
         }
 
@@ -63,17 +63,23 @@ namespace BinarySearchTree
 
             if (this.leftTree != null)
             {
-                this.leftCount++;
+                leftCount++;
                 Console.Write("On Left Tree :");
                 this.leftTree.Display();
             }
 
             if (this.rightTree != null)
             {
-                this.rightCount++;
+                rightCount++;
                 Console.Write("On Right Tree :");
                 this.rightTree.Display();
             }
+        }
+        //Size method shows element present in the tree
+
+        public void Getsize()
+        {
+            Console.WriteLine("Size of the tree is :" + " " + (1 + leftCount + rightCount));
         }
     }
 }
